@@ -125,7 +125,7 @@ export class InitCommand extends CommandRunner {
           }
         },
         error: () => {
-          logError(`❌ Git Not Intalled!`)
+          logError(`❌ Git Not Installed!`)
         },
       })
     )
