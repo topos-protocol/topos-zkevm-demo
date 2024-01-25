@@ -30,11 +30,37 @@ export class GeneratezkProofCommmand extends CommandRunner {
   }
 }
 
+@SubCommand({
+  name: 'merkle-proof',
+  arguments: '<txHash>',
+  description:
+    'Generate a receipt merkle proof for a transaction from a transaction hash',
+})
+export class GenerateReceiptMerkleProofCommmand extends CommandRunner {
+  constructor(private _spawn: ReactiveSpawn) {
+    super()
+  }
+
+  async run(args: string[]) {
+    const executionPath = `${globalThis.workingDir}/local-zkevm/sample-hardhat-project`
+    const [txHash] = args
+    this._spawn
+      .reactify(
+        `cd ${executionPath} && npm run generate-receipt-merkle-proof ${txHash}`
+      )
+      .subscribe({
+        next: (data) => {
+          log(data.output as string)
+        },
+      })
+  }
+}
+
 @Command({
   name: 'generate',
   arguments: '<zk-proof|merkle-proof>',
   description: 'Generate proofs for some execution',
-  subCommands: [GeneratezkProofCommmand],
+  subCommands: [GeneratezkProofCommmand, GenerateReceiptMerkleProofCommmand],
 })
 export class GenerateCommand extends CommandRunner {
   async run(args: string[]) {}

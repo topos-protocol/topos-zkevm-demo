@@ -32,11 +32,40 @@ export class VerifyzkProofCommmand extends CommandRunner {
   }
 }
 
+@SubCommand({
+  name: 'merkle-proof',
+  arguments: '<txHash> <merkleProof> <receiptTrieRoot>',
+  description: 'Verify a receipt merkle proof',
+})
+export class VerifyReceiptMerkleProofCommmand extends CommandRunner {
+  constructor(private _spawn: ReactiveSpawn) {
+    super()
+  }
+
+  async run(args: string[]) {
+    const executionPath = `${globalThis.workingDir}/local-zkevm/sample-hardhat-project`
+    const [txHash, merkleProof, receiptTrieRoot] = args
+
+    log(`Verifying merkle-proof for transaction: ${txHash}`)
+
+    this._spawn
+      .reactify(
+        `cd ${executionPath} && npm run verify-receipt-merkle-proof ${txHash} ${merkleProof} ${receiptTrieRoot}`
+      )
+      .subscribe({
+        next: (data) => {
+          log(``)
+          log(data.output as string)
+        },
+      })
+  }
+}
+
 @Command({
   name: 'verify',
   arguments: '<zk-proof|merkle-proof>',
   description: 'Verify proofs for some execution',
-  subCommands: [VerifyzkProofCommmand],
+  subCommands: [VerifyzkProofCommmand, VerifyReceiptMerkleProofCommmand],
 })
 export class VerifyCommand extends CommandRunner {
   async run(args: string[]) {}
