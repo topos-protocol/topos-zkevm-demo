@@ -34,12 +34,14 @@ export class CleanCommand extends CommandRunner {
           log(
             `Working directory (${globalThis.workingDir}) is not found; nothing to clean.`
           )
+          log(``)
           subscriber.next()
           subscriber.complete()
         } else if (!stats.isDirectory()) {
           logError(
             `The working directory (${globalThis.workingDir}) is not a directory; this is an error!`
           )
+          log(``)
           globalThis.workingDirExists = false
           subscriber.error()
         } else {
@@ -49,6 +51,7 @@ export class CleanCommand extends CommandRunner {
               logError(
                 `Error while trying to read the working directory (${globalThis.workingDir})`
               )
+              log(``)
               subscriber.error()
             }
 
@@ -57,11 +60,13 @@ export class CleanCommand extends CommandRunner {
               log(
                 `Working directory (${globalThis.workingDir}) is empty; nothing to clean.`
               )
+              log(``)
               subscriber.next()
               subscriber.complete()
             } else {
               globalThis.workingDirExists = true
               log(`Found working directory (${globalThis.workingDir})`)
+              log(``)
               subscriber.next()
               subscriber.complete()
             }

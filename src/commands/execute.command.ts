@@ -1,5 +1,6 @@
 import { Command, CommandRunner } from 'nest-commander'
 
+import { log } from '../loggers'
 import { ReactiveSpawn } from '../ReactiveSpawn'
 
 @Command({
@@ -16,7 +17,7 @@ export class ExecuteCommand extends CommandRunner {
     const executionPath = `${globalThis.workingDir}/local-zkevm/sample-hardhat-project`
     this._spawn.reactify(`cd ${executionPath} && npm run demo`).subscribe({
       next: (data) => {
-        console.log(data.output)
+        log(data.output as string)
       },
     })
   }
