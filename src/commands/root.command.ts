@@ -32,7 +32,7 @@ Example Usage
   $ ${example('topos-zkevm-demo version')}
     This will print the version of the topos zkevm demo.
 
-  $ ${example('topos-zkevm-demo version -q')}')
+  $ ${example('topos-zkevm-demo version -q')}
     This will print only the numbers of the topos-zkevm-demo version, with no other output.
   
 Configuration
