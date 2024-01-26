@@ -13,10 +13,10 @@ const MIN_VERSION_GIT = '2.0.0'
 const MIN_VERSION_NODE = '16.0.0'
 
 @Command({
-  name: 'init',
+  name: 'install',
   description: 'Install Topos-zkEVM-Demo',
 })
-export class InitCommand extends CommandRunner {
+export class InstallCommand extends CommandRunner {
   constructor(private _spawn: ReactiveSpawn) {
     super()
   }
@@ -29,7 +29,6 @@ export class InitCommand extends CommandRunner {
       this._verifyDependencyInstallation(),
       this._createWorkingDirectoryIfInexistant(),
       this._cloneGitRepositories(),
-      this._runLocalzkEVM(),
       this._buildDemoApp()
       // this._buildZeroBin()
     ).subscribe({
@@ -40,10 +39,8 @@ export class InitCommand extends CommandRunner {
           `You'll find a demo script in ${globalThis.workingDir}/local-zkevm/sample-hardhat-project/scripts as well as a demo contract in ${globalThis.workingDir}/local-zkevm/sample-hardhat-project/contract.`
         )
         log(``)
-        log(
-          `Run the following command to execute the script (this will deploy the contract and execute transactions):`
-        )
-        log(`$ topos-zkevm-demo execute`)
+        log(`Run the following command to start the local-zkevm infra:`)
+        log(`$ topos-zkevm-demo start`)
       },
       error: (errBuffer) => {
         logError(`❗ Error:\n${errBuffer}`)
@@ -248,16 +245,6 @@ export class InitCommand extends CommandRunner {
         }
       })
     })
-  }
-
-  private _runLocalzkEVM() {
-    const executionPath = `${globalThis.workingDir}/local-zkevm`
-
-    return concat(
-      defer(() => of(log(`Running the local-zkevm infra...`))),
-      this._spawn.reactify(`cd ${executionPath} && docker compose up -d`),
-      defer(() => of(log(`✅ Local-zkEVM infra is running`), log(``)))
-    )
   }
 
   private _buildDemoApp() {

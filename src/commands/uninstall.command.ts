@@ -7,16 +7,16 @@ import { ReactiveSpawn } from '../ReactiveSpawn'
 import { log, logError } from '../loggers'
 
 @Command({
-  name: 'clean',
+  name: 'uninstall',
   description: 'Uninstall Topos-zkEVM-Demo',
 })
-export class CleanCommand extends CommandRunner {
+export class UninstallCommand extends CommandRunner {
   constructor(private _spawn: ReactiveSpawn) {
     super()
   }
 
   async run() {
-    log(`Cleaning up Topos-zkEVM-Demo...`)
+    log(`Uninstalling Topos-zkEVM-Demo...`)
     log(``)
 
     concat(
@@ -32,7 +32,7 @@ export class CleanCommand extends CommandRunner {
         if (error) {
           globalThis.workingDirExists = false
           log(
-            `Working directory (${globalThis.workingDir}) is not found; nothing to clean.`
+            `Working directory (${globalThis.workingDir}) is not found; nothing to uninstall.`
           )
           log(``)
           subscriber.next()
@@ -58,7 +58,7 @@ export class CleanCommand extends CommandRunner {
             if (files.length === 0) {
               globalThis.workingDirExists = false
               log(
-                `Working directory (${globalThis.workingDir}) is empty; nothing to clean.`
+                `Working directory (${globalThis.workingDir}) is empty; nothing to uninstall.`
               )
               log(``)
               subscriber.next()
@@ -80,9 +80,11 @@ export class CleanCommand extends CommandRunner {
     const executionPath = `${globalThis.workingDir}/local-zkevm`
 
     return concat(
-      defer(() => of(log(`Shutting down the local-zkevm infra...`))),
+      defer(() => of(log(`Stopping and purging the local-zkevm infra...`))),
       this._spawn.reactify(`cd ${executionPath} && docker compose down -v`),
-      defer(() => of(log(`✅ Local-zkEVM infra has been shut down`), log(``)))
+      defer(() =>
+        of(log(`✅ Local-zkEVM infra has been stopped and purged`), log(``))
+      )
     )
   }
 
@@ -94,7 +96,7 @@ export class CleanCommand extends CommandRunner {
         globalThis.workingDir.indexOf(homeDir) !== -1 &&
         globalThis.workingDir !== homeDir
       ) {
-        log(`Cleaning up the working directory (${globalThis.workingDir})`)
+        log(`Uninstalling up the working directory (${globalThis.workingDir})`)
         this._spawn.reactify(`rm -rf ${globalThis.workingDir}`).subscribe({
           complete: () => {
             log('✅ Working directory has been removed')
@@ -103,7 +105,7 @@ export class CleanCommand extends CommandRunner {
         })
       } else {
         log('')
-        log(`✅ Working direction does not exist; nothing to clean`)
+        log(`✅ Working direction does not exist; nothing to uninstall`)
         subscriber.complete()
       }
     })
