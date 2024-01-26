@@ -96,7 +96,7 @@ export class UninstallCommand extends CommandRunner {
         globalThis.workingDir.indexOf(homeDir) !== -1 &&
         globalThis.workingDir !== homeDir
       ) {
-        log(`Uninstalling up the working directory (${globalThis.workingDir})`)
+        log(`Removing the working directory (${globalThis.workingDir})`)
         this._spawn.reactify(`rm -rf ${globalThis.workingDir}`).subscribe({
           complete: () => {
             log('✅ Working directory has been removed')

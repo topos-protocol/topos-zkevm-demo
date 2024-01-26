@@ -59,7 +59,8 @@ export class InstallCommand extends CommandRunner {
       of(log('Verifying dependency installation...')),
       this._verifyDockerInstallation(),
       this._verifyGitInstallation(),
-      this._verifyNodeJSInstallation()
+      this._verifyNodeJSInstallation(),
+      this._verifyRustNightlyInstallation()
     ).pipe(
       tap({
         complete: () => {
@@ -73,11 +74,11 @@ export class InstallCommand extends CommandRunner {
   private _verifyDockerInstallation() {
     return this._spawn.reactify('docker --version').pipe(
       tap({
-        next: (data: Next) => {
+        next: (data) => {
           if (data && data.hasOwnProperty('output')) {
-            let match = RegExp(/Docker version ([0-9]+\.[0-9]+\.[0-9]+)/).exec(
-              `${data.output}`
-            )
+            const match = RegExp(
+              /Docker version ([0-9]+\.[0-9]+\.[0-9]+)/
+            ).exec(`${data.output}`)
 
             if (match && match.length > 1) {
               if (satisfies(match[1], `>=${MIN_VERSION_DOCKER}`)) {
@@ -102,9 +103,9 @@ export class InstallCommand extends CommandRunner {
   private _verifyGitInstallation() {
     return this._spawn.reactify('git --version').pipe(
       tap({
-        next: (data: Next) => {
+        next: (data) => {
           if (data && data.hasOwnProperty('output')) {
-            let match = RegExp(/git version ([0-9]+\.[0-9]+\.[0-9]+)/).exec(
+            const match = RegExp(/git version ([0-9]+\.[0-9]+\.[0-9]+)/).exec(
               `${data.output}`
             )
 
@@ -122,7 +123,7 @@ export class InstallCommand extends CommandRunner {
           }
         },
         error: () => {
-          logError(`❌ Git Not Installed!`)
+          logError(`❌ Git not installed!`)
         },
       })
     )
@@ -131,9 +132,9 @@ export class InstallCommand extends CommandRunner {
   private _verifyNodeJSInstallation() {
     return this._spawn.reactify('node --version').pipe(
       tap({
-        next: (data: Next) => {
+        next: (data) => {
           if (data && data.hasOwnProperty('output')) {
-            let match = RegExp(/v([0-9]+\.[0-9]+\.[0-9]+)/).exec(
+            const match = RegExp(/v([0-9]+\.[0-9]+\.[0-9]+)/).exec(
               `${data.output}`
             )
 
@@ -151,7 +152,28 @@ export class InstallCommand extends CommandRunner {
           }
         },
         error: () => {
-          logError(`❌ Node.js Not Installed!`)
+          logError(`❌ Node.js not installed!`)
+        },
+      })
+    )
+  }
+
+  private _verifyRustNightlyInstallation() {
+    return this._spawn.reactify('rustc +nightly --version').pipe(
+      tap({
+        next: (data) => {
+          if (data && data.hasOwnProperty('output')) {
+            const match = RegExp(/rustc \d+\.\d+\.\d+-nightly \(.+\)/).exec(
+              `${data.output}`
+            )
+
+            if (match && match.length) {
+              log(`✅ Rust nightly -- Version: ${match[0]}`)
+            }
+          }
+        },
+        error: () => {
+          logError(`❌ Rust nightly not installed!`)
         },
       })
     )
