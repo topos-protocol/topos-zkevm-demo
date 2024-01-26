@@ -29,8 +29,8 @@ export class InstallCommand extends CommandRunner {
       this._verifyDependencyInstallation(),
       this._createWorkingDirectoryIfInexistant(),
       this._cloneGitRepositories(),
-      this._buildDemoApp()
-      // this._buildZeroBin()
+      this._buildDemoApp(),
+      this._buildZeroBin()
     ).subscribe({
       complete: () => {
         log(`🔥 Topos zkEVM Demo has now been installed 🔥`)
@@ -312,9 +312,7 @@ export class InstallCommand extends CommandRunner {
 
   private _cargoBuildRelease(executionPath: string) {
     return this._spawn
-      .reactify(
-        `cd ${executionPath} && RUSTFLAGS=-Ctarget-cpu=native cargo build --release`
-      )
+      .reactify(`cd ${executionPath} && cargo build --release`)
       .pipe(
         tap({
           complete: () => {
