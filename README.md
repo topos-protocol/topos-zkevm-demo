@@ -233,7 +233,7 @@ Congratulations, you have now verified that the provided transaction is valid, w
 
 #### A few details
 
-- `zero-bin` has been tailored to function with 90% of the transactions that are commonly executed on a chain. If you have used your own contract and script in the hardhat sample project, and have faced technical issues with the zk-proof generation, reach out to us on our [Discord](https://discord.gg/zMCqqCbGMV)!
+- `zero-bin` parameters have been tailored to function with most of the transactions that are commonly executed on a chain. If you have used your own contract and script in the hardhat sample project, and have faced technical issues with the zk-proof generation, reach out to us on our [Discord](https://discord.gg/zMCqqCbGMV)!
 - You may have noticed that, as a `verifier`, you still had to interact with the Erigon chain to retrieve the receipt trie root. This means that you have full access to the chain, which is contradictory with the zero-knowledge aspect of verifying the block zk-proof. This is a shortcoming of Topos zkEVM Demo, and is where, in a real world scenario, the Topos zkEcosystem comes into play, by distributing verified subnet certificates that contain state transitions' zk-proofs and receipt trie roots to any verifiers. Read more about Topos [here](https://docs.topos.technology/content/module-1/4-protocol.html#transmission-control-engine-tce-)!
 
 #### A few extra commands
