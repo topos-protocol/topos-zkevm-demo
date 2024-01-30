@@ -16,6 +16,12 @@ Experience the power of the Topos zkEVM on your local environment with an all-in
 
 ### Requirements
 
+#### Hardware
+
+- Memory: 16GB or more
+
+#### Software
+
 - [Docker](https://docs.docker.com/get-docker/_) version 17.06.0 or greater
 - [Docker Compose](https://docs.docker.com/compose/install/) version 2.0.0 or greater
 - [NodeJS](https://nodejs.dev/en/) version 16.0.0 or greater
