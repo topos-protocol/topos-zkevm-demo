@@ -122,6 +122,8 @@ For that matter, you will generate and send two proofs to the `verifier`:
 
 By verifying the _merkle proof_, the `verifier` can verify that your transaction is part of a greater set of transactions (a set that remains unknown to the `verifier`), and by verifying the `zk-proof`, the `verifier` can ensure that this greater set of transactions is computationally valid. Altogether, the verifier will verify that your transaction is part of a valid block, hence is a valid transaction.
 
+_Note: The merkle proof is based on a transaction's receipt instead of the transaction itself (and is verified against a block receipt trie instead of its transaction trie), so that the `verifier` can additionally verify that the transaction was correctly executed as per the code of the destination contract (with the receipt `status`), and retrieve metadata describing that execution (with the receipt logs)_.
+
 Let's start by generating the merkle proof for your transaction:
 
 ```bash
