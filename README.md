@@ -67,7 +67,7 @@ Topos zkEVM Demo is built on top of two internal projects:
 - [local-zkevm](https://github.com/topos-protocol/local-zkevm): a setup to run an Erigon chain along with a hardhat sample project to deploy a demo contract and send transactions
 - [zero-bin](https://github.com/topos-protocol/zero-bin): the zk prover/verifier
 
-_Note 1: You only need to run this command once._
+_Note 1: You only need to run this command once._<br/>
 _Note 2: Topos zkEVM Demo follows the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html). Run `$ topos-zkevm-demo --help` to find the demo root directory, which we will later refer to as `DEMO_ROOT`._
 
 #### 2. Start the Erigon chain
@@ -180,7 +180,7 @@ For that matter, you will execute the following command:
 $ topos-zkevm-demo verify merkle-proof <tx_hash> <merkle_roof> <receipt_trie_root>
 ```
 
-As you may have noticed, the `verify merkle-proof` commands expect a `receipt_trie_root` that we haven't discussed about. Let's explain its role: a merkle proof consists in a merkle path that leads to the tree root, i.e., it is a list of tree nodes (hashes) that, combined, output a hash that equals the tree root, proving that the leaf (the first node of the path) is indeed in the tree. To verify a merkle proof, you therefore need three pieces of information: a leaf, a proof, and the tree root.
+As you may have noticed, the `verify merkle-proof` commands expect a `receipt_trie_root` that we haven't discussed about. Let's explain its role: a merkle proof consists in a merkle path that leads to the trie root, i.e., it is a list of trie nodes (hashes) that, combined, output a hash that equals the trie root, proving that the leaf (the first node of the path) is indeed in the trie. To verify a merkle proof, you therefore need three pieces of information: a leaf, a proof, and the trie root.
 
 _Note: The `verify merkle-proof` command internally computes the right leaf for you, from the `tx_hash` that you pass._
 
