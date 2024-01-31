@@ -54,6 +54,20 @@ $ npx @topos-protocol/topos-zkevm-demo
 
 Navigate to [WALKTHROUGH](/WALKTHROUGH.md) to run the demo scenario!
 
+### Development
+
+To locally build the project, run:
+
+```bash
+$ npm run build
+```
+
+Then, test the newly built CLI:
+
+```bash
+$ node dist/main <command>
+```
+
 ### Discussion
 
 For community help or discussion, you can join the Topos Discord server:
