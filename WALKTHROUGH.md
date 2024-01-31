@@ -123,7 +123,7 @@ For example:
 $ topos-zkevm-demo generate zk-proof 4
 Proving block 4...
 
-Successfully generated proof for block 4! (proof available at /Users/sebastiendan/.local/share/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof)!
+Successfully generated proof for block 4! (proof available at DEMO_ROOT/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof)!
 ```
 
 The command outputs the local path to the zk-proof file (`.zkproof` extension).
@@ -189,10 +189,10 @@ $ topos-zkevm-demo verify zk-proof <path_to_zk_proof>
 For example:
 
 ```bash
-$ topos-zkevm-demo verify zk-proof /Users/sebastiendan/.local/share/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof
-Verifying zk-proof: /Users/sebastiendan/.local/share/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof
+$ topos-zkevm-demo verify zk-proof DEMO_ROOT/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof
+Verifying zk-proof: DEMO_ROOT/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof
 
-✅ /Users/sebastiendan/.local/share/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof has been verified
+✅ DEMO_ROOT/topos-zkevm-demo/zero-bin/proofs/b00004.zkproof has been verified
 ```
 
 Congratulations, you have now verified that the provided transaction is valid, with zero knowledge of the other transactions of the block!
