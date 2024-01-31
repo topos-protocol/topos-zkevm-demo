@@ -56,7 +56,7 @@ Navigate to [WALKTHROUGH](/WALKTHROUGH.md) to run the demo scenario!
 
 ### Development
 
-To locally build the project, run:
+To build the project locally, run:
 
 ```bash
 $ npm run build
