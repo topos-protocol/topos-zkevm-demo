@@ -12,56 +12,68 @@
 
 ## Getting Started
 
-Coming soon...
+Experience the power of the Topos zkEVM on your local environment with an all-in-one Command-Line Interface (CLI) to run your own demo scenario.
 
-### Requirements
+### System Requirements
 
+#### Hardware
+
+- Memory: 16GB or more
+
+#### Software
+
+- Linux, MacOS
 - [Docker](https://docs.docker.com/get-docker/_) version 17.06.0 or greater
 - [Docker Compose](https://docs.docker.com/compose/install/) version 2.0.0 or greater
 - [NodeJS](https://nodejs.dev/en/) version 16.0.0 or greater
+- [Rust](https://www.rust-lang.org/tools/install) recent nightly (2024)
 - Git
 
-### Install / Run zkevm-demo
+### Install / Run the CLI
 
-Depending on your NodeJS environment and preferences, there are several ways to install the Topos zkEVM Demo.
+Depending on your NodeJS environment and preferences, there are several ways to install Topos zkEVM Demo.
 
 To install the topos zkevm demo globally, using `npm`, run the following command:
 
-```
+```bash
 $ npm install -g @topos-protocol/topos-zkevm-demo
 ```
 
 To install the topos zkevm demo globally, using `yarn`, run the following command:
 
-```
+```bash
 $ yarn global add @topos-protocol/topos-zkevm-demo
 ```
 
 Alternatively, you can install and run via `npx`:
 
-```
+```bash
 $ npx @topos-protocol/topos-zkevm-demo
 ```
 
-### Run the CLI
+### Run the demo
 
-Coming soon...
+Navigate to (soon) to run the demo scenario!
 
 ### Development
 
-To contribute to the development of zkevm-demo, [fork](https://github.com/topos-protocol/zkevm-demo/fork) the repository.
+To build the project locally, run:
 
-Do your work within a branch on your fork. When it is ready, create a Pull Request that clearly explains the reasoning behind your code changes, what they do, and anything that we should be aware of when testing your code.
+```bash
+$ npm run build
+```
+
+Then, test the newly built CLI:
+
+```bash
+$ node dist/main <command>
+```
 
 ### Discussion
 
 For community help or discussion, you can join the Topos Discord server:
 
 [https://discord.gg/zMCqqCbGMV](https://discord.gg/zMCqqCbGMV)
-
-### Troubleshooting
-
-Coming soon...
 
 ## License
 
