@@ -16,13 +16,13 @@ Let's go over the demo scenario you are about to run!
 
 ### 1. Install dependencies
 
-First, let's verify that your local environment is suitable for running Topos zkEVM Demo, and install its internal projects:
+First, let's verify that your local environment is suitable for running Topos zkEVM Demo, and then install the projects it uses:
 
 ```bash
 $ topos-zkevm-demo install
 ```
 
-Topos zkEVM Demo is built on top of two internal projects:
+Topos zkEVM Demo is built on top of two projects:
 
 - [local-zkevm](https://github.com/topos-protocol/local-zkevm): a setup to run a local development chain along with a [hardhat](https://hardhat.org/) sample project to deploy a demo contract and send transactions
 - [zero-bin](https://github.com/topos-protocol/zero-bin): the zk prover/verifier
