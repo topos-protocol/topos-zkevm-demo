@@ -1,6 +1,6 @@
 {
   "name": "@topos-protocol/topos-zkevm-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Topos zkEVM demo",
   "bin": {
     "topos-zkevm-demo": "dist/main.js"
