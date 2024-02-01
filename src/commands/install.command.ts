@@ -6,7 +6,7 @@ import { satisfies } from 'semver'
 import { log, logError, logToFile } from '../loggers'
 import { Next, ReactiveSpawn } from '../ReactiveSpawn'
 
-const LOCAL_ZKEVM_REF = 'feat/stateless'
+const LOCAL_ZKEVM_REF = 'main'
 const ZERO_BIN_REF = 'main'
 const MIN_VERSION_DOCKER = '17.6.0'
 const MIN_VERSION_GIT = '2.0.0'
