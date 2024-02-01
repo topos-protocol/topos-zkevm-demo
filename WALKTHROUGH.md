@@ -24,7 +24,7 @@ $ topos-zkevm-demo install
 
 Topos zkEVM Demo is built on top of two internal projects:
 
-- [local-zkevm](https://github.com/topos-protocol/local-zkevm): a setup to run a local development chain along with a hardhat sample project to deploy a demo contract and send transactions
+- [local-zkevm](https://github.com/topos-protocol/local-zkevm): a setup to run a local development chain along with a [hardhat](https://hardhat.org/) sample project to deploy a demo contract and send transactions
 - [zero-bin](https://github.com/topos-protocol/zero-bin): the zk prover/verifier
 
 _Note 1: You only need to run this command once._<br/>
