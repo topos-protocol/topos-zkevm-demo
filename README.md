@@ -53,7 +53,7 @@ $ npx @topos-protocol/topos-zkevm-demo
 
 ### Run the demo
 
-Navigate to (soon) to run the demo scenario!
+Navigate to our [Dev Portal](https://docs.topos.technology/content/module-2/4-topos-zkevm-demo.html) to walk through the demo scenario!
 
 ### Development
 
